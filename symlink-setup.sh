@@ -150,21 +150,22 @@ print_success() {
 declare -a FILES_TO_SYMLINK=$(find . -type f -maxdepth 1 -name ".*" -not -name .DS_Store -not -name .git -not -name .macos | sed -e 's|//|/|' | sed -e 's|./.|.|' | sort)
 FILES_TO_SYMLINK="$FILES_TO_SYMLINK .vim bin .config/fish" # add in vim and the binaries
 
-
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
+# robbc this has never really worked for me...
 main() {
-
     local i=""
     local sourceFile=""
     local targetFile=""
-
-    for i in "${FILES_TO_SYMLINK[@]}"; do
-
+things="one two"
+    for i in $FILES_TO_SYMLINK; do
+    #for i in $things; do
+    #echo i $i
         sourceFile="$(pwd)/$i"
         targetFile="$HOME/$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
-
+#echo sourceFile $sourceFile
+#echo targetFile $targetFile
         if [ -e "$targetFile" ]; then
+        #echo "$targetFile exists"
             if [ "$(readlink "$targetFile")" != "$sourceFile" ]; then
 
                 ask_for_confirmation "'$targetFile' already exists, do you want to overwrite it?"
@@ -179,9 +180,11 @@ main() {
                 print_success "$targetFile → $sourceFile"
             fi
         else
-            execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
+        #echo linking
+echo command: "ln -fs \"$sourceFile\" $targetFile"
+            #ln -fs \"$sourceFile\" $targetFile
         fi
-
+#echo done
     done
 
 }

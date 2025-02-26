@@ -17,7 +17,7 @@ brew install gnu-sed
 
 # Updated shells
 # Note: don’t forget to add `/usr/local/bin/<EACHSHELL>` to `/etc/shells` before running `chsh`.
-brew install fish
+# brew install fish
 
 brew install bash-completion
 
@@ -55,11 +55,11 @@ brew install mtr
 brew install the_silver_searcher # ack is an alternative, tbh i forget which i like more.
 brew install fzf
 
-brew install imagemagick
+#brew install imagemagick
 brew install node # This installs `npm` too using the recommended installation method
 brew install rename
 brew install tree
-brew install ffmpeg
+# brew install ffmpeg
 
 # json stuff
 brew install jq gron
@@ -68,6 +68,6 @@ brew install jq gron
 brew install gdu # available as gdu-go. faster than ncdu on SSD's.
 
 
-brew install scrcpy # control/view android phone from PC. amazing
-brew install youtube-dl
+# brew install scrcpy # control/view android phone from PC. amazing
+# brew install youtube-dl
 
